@@ -22,4 +22,10 @@ test "render a new product form" do
     assert_response :success
     assert_select "form"
   end
+
+test "allow to create a new product" do
+    post products_path, params: { product: { title: "PS4", description: "PS4 en buen estado", price: 150 } }
+
+    assert_redirected_to products_path
+  end
 end
