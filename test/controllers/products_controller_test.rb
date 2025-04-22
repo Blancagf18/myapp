@@ -27,6 +27,7 @@ test "allow to create a new product" do
     post products_path, params: { product: { title: "PS4", description: "PS4 en buen estado", price: 150 } }
 
     assert_redirected_to products_path
+    assert_equal flash[:notice], "El producto fue creado correctamente"
   end
 
   test "does not allow to create a new product with empty fields" do
