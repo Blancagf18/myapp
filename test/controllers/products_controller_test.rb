@@ -35,4 +35,11 @@ test "allow to create a new product" do
 
     assert_response :unprocessable_entity
   end
+
+  test "render a edit product form" do
+    get edit_product_path(products(:ps4))
+
+    assert_response :success
+    assert_select "form"
+  end
 end
