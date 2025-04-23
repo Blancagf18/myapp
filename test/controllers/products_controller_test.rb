@@ -42,4 +42,11 @@ test "allow to create a new product" do
     assert_response :success
     assert_select "form"
   end
+
+  test "allow to update a product" do
+    patch product_path(products(:ps4)), params: { product: { title: "PS4", description: "PS4 en buen estado", price: 165 } }
+
+    assert_redirected_to products_path
+    assert_equal flash[:notice], "El producto fue actualizado correctamente"
+  end
 end
